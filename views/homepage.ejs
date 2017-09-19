@@ -1,0 +1,96 @@
+<!--MAIN LAYOUT page-->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>LoginApp</title>
+	<link rel="stylesheet" href="/css/bootstrap.css" />
+	<link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" type="text/css" href="/css/regstyle.css">
+  <script type="text/javascript" src="/js/regvalidations.js"></script>
+</head>
+<body background="/images/wood.jpg" bgcolor="">
+    <div class="header clearfix" id="">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+              <li role="presentation"><a href="#">Notifications</a></li>
+              <li role="presentation"><a href="/users/logout">Logout</a></li>
+          </ul>
+        </nav>
+        <img src="/images/logo.png" height="86px" width="290px" style="margin-left:24px">
+      </div>
+<!--rightside bar-->
+<div class="col-md-2">
+                <div id="color">Feed <hr id="hrsty">
+                    <div class="leftlist">
+                       <ul class="nav_list"> <li><a href="">Top stories</a></li>
+                                             <li><a href="">Trending</a></li>
+                                             <li><a href="">Bookmarked </a></li>
+                                             <li><a href="">posts</a></li>
+                                             <li><a href="">History</a></li>                                            
+                           
+                    </ul>
+                                                                
+                  </div>
+                  </div>
+            </div>
+
+
+	<div class="container">
+       <h4 id="timelinetext">Welcome, <%= user.name %> </h4>
+    <form name="qform" method="post" action="/users/homepage">
+             <div class="regstyle" id="errorBox"></div>
+      <div class="form-group">
+
+      <label for="quest">Have a question put it here!!:</label>
+         <textarea class="form-control" rows="2" id="quest" placeholder="Your Question" name="question"></textarea>
+          <div class="form-group">
+            <label for="desc">Description:</label>
+          <textarea class="form-control" rows="5" id="desc" placeholder="Description(optional)" style="margin-bottom: 20px" name="description"></textarea>
+
+             <div class="btn-group" role="group">
+                       <button type="submit" class="btn btn-primary" onclick="quesval()">Submit Query</button>
+             </div>
+          </div>
+      </div>
+      <hr>
+</form>
+
+<% var lengthofquests = quests.length - 1 %>  <div id="timelinetext"><h4>Questions Timeline!</h4></div>
+        <% for(var k=lengthofquests;k>0;k--){ %>
+
+       <div>
+      <hr> <p><b id="username"><%= quests[k].quser %></b><span id="date"><%= quests[k].timeresult %></span></p>
+ <!-- <h5><u>Question:</u></h5> --><b><p><%= quests[k].question %>  </p></b>
+         <h5><u>Description:</u></h5><p><%= quests[k].description %> </p>
+          <a id="myLink" href="/users/<%= quests[k].id %>" target="_blank">
+          <button class="btn btn-primary">View Answers!</button></a>
+
+       </div>
+       <% } %>
+      
+      
+
+    </div> 
+  <div class="row well" style="opacity:0.0">
+    
+  </div>
+    <div class="container-fluid">
+      <div class="row ">
+         <div class="col-md-12 FooterNav">
+            <ul class="nav_list">
+               <li class="about">  <a href="/users/about">About</a></li>
+               <li class="prizes">  <a href="/prizes">Prizes</a></li>
+               <li class="careers">  <a href="/careers">Careers</a></li>
+               <li class="sitemap">  <a href="/sitemap">Sitemap</a></li>
+               <li class="privacy">   <a href="/about/privacy">Privacy</a></li>
+               <li class="tos">        <a href="/about/tos">Terms</a></li>
+               <li class="feedback">    <a href="/contact">Contact</a></li>
+               <li class="language" > <p style="margin-left:105px;">&copy; 2017 Lync Solutions, Inc.</p></li>
+               </ul>
+         </div>
+          
+      </div>
+      
+    </div>
+</body>
+</html>

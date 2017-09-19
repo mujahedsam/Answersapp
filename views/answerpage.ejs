@@ -1,0 +1,70 @@
+
+<!--Answers page-->
+
+<html><head>
+         <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+         <link rel="stylesheet" type="text/css" href="/css/regstyle.css">
+         <script type="text/javascript" src="/js/regvalidations.js"></script>
+
+    </head>
+<body background="/images/wood.jpg">
+    <div class="container">
+        <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+               
+              <li role="presentation"><a href="#">Notifications</a></li>
+              <li role="presentation"><a href="/users/logout">Logout</a></li>
+          </ul>
+        </nav>
+        <img src="/images/logo.png" height="86px" width="290px" style="margin-left:24px">
+      </div>
+    
+    <div class="row">
+  <div class="col-md-offset-2 col-md-6"> 
+
+
+    <div id="timelinetext"><h4>Answers Timeline!</h4></div>
+
+       <div class="row well">
+    
+                       <hr>
+
+          <p><b id="username"><%= quests.quser %></b><span id="date"><%= quests.timeresult %></span></p>
+         <!-- <h5><u>Question:</u></h5> --><b><p><%= quests.question %></p></b>
+         <h5><u>Description:</u></h5><p><%= quests.description %> </p>
+            <!-- answer form-->
+            <form name="ansform" method="post" action="/users/answer">
+                <div class="regstyle" id="errorBox"></div>
+                    <div class="form-group">
+                       <label for="answer">Have an Answer put it here!!:</label>
+                       <textarea class="form-control" rows="2" placeholder="Your Answer here!!" name="answer"></textarea>
+                       <input style='display:none' name='id' value='<%= id %>'/>
+                    </div>
+                     <div class="btn-group" role="group">
+                      <div class="regstyle" id="errorBox"></div>
+                        <button type="submit" class="btn btn-default" onclick="ansval()">Submit Answer</button>
+                    </div>
+
+          </form>
+          <hr>
+          <div id="timelinetext"><h4>Submitted Answers!</h4></div>
+          <% var lengthofans = ans.length-1; %>
+          
+          <hr>
+          <%  for(var x = lengthofans; x>=0; x--) { %>
+
+          <h5><u>Posted By!:</u></h5><b><p><%= ans[x].user %> </p></b>
+          <h5><u>Answer!:</u></h5><p><%= ans[x].answer %> </p>
+
+          <a href="/users/delete?did=<%= ans[x]._id %>&qid=<%= ans[x].subid %>"><button class="btn btn-primary">Delete</button></a>
+          <hr>
+           <% } %>
+            
+          </div>
+
+       
+ 
+        </div></div> </div>
+</body>
+</html>
